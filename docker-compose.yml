@@ -1,0 +1,16 @@
+services:
+  rvc:
+    container_name: 'rvc'
+    image: 'ericlacasse/retrieval-based-voice-conversion-webui:main'
+    tty: true
+    ports:
+      - "7865:7865"
+    volumes:
+      - ./Retrieval-based-Voice-Conversion-WebUI:/home/rvc/Retrieval-based-Voice-Conversion-WebUI
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
